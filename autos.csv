@@ -1,0 +1,21 @@
+Placa,Marca,Modelo,Año,Color,Capacidad del motor (L),Capacidad del tanque (L),Velocidad máxima (km/h),Transmisión,Precio (USD),Estado,Número de puertas,Tamaño de ruedas (pulgadas),Capacidad del maletero (L)
+XYZ-3948,Toyota,Corolla,2018,Rojo,2.0,50.3,180,false,22000,1,4,16,470
+XYZ-1589,Ford,Ranger,2020,Azul,3.2,70.0,200,true,35000,3,4,18,500
+XYZ-7453,Honda,Civic,2015,Negro,1.8,45.0,170,false,18000,1,4,16,450
+XYZ-2190,BMW,Camry,2017,Blanco,2.5,55.0,220,false,27000,2,4,17,550
+XYZ-6731,Nissan,Altima,2021,Gris,2.4,65.0,190,true,26000,1,4,16,530
+XYZ-4820,Chevrolet,Malibu,2019,Plateado,2.2,60.0,210,false,23000,3,4,17,490
+XYZ-9014,Hyundai,Elantra,2016,Verde,1.6,48.5,180,true,17000,2,4,16,440
+XYZ-7623,Volkswagen,Golf,2022,Amarillo,2.0,52.5,200,false,28000,1,4,16,460
+XYZ-1234,Mercedes-Benz,A-Class,2019,Blanco,1.5,47.0,220,false,31000,1,4,17,500
+XYZ-2849,Mazda,CX-5,2020,Negro,2.5,62.0,210,false,29000,2,5,18,600
+XYZ-3047,Toyota,Corolla,2017,Azul,1.8,50.0,180,true,19000,1,4,16,460
+XYZ-7564,Ford,Ranger,2018,Rojo,3.0,68.0,195,false,34000,3,4,17,500
+XYZ-4928,Honda,Civic,2019,Gris,2.0,52.0,185,true,21000,1,4,16,470
+XYZ-3952,BMW,Camry,2021,Plateado,2.4,60.0,230,false,28000,2,4,18,540
+XYZ-7591,Nissan,Altima,2016,Blanco,2.2,55.0,190,true,20000,3,4,16,500
+XYZ-8375,Chevrolet,Malibu,2020,Negro,2.6,65.0,215,false,25000,1,4,17,510
+XYZ-6482,Hyundai,Elantra,2021,Rojo,1.8,58.0,200,false,26000,2,4,16,450
+XYZ-3719,Volkswagen,Golf,2018,Azul,2.3,62.0,205,true,24000,1,4,17,480
+XYZ-8543,Mercedes-Benz,A-Class,2022,Gris,1.6,53.0,225,false,32000,1,4,17,520
+XYZ-9641,Mazda,CX-5,2019,Plateado,2.5,70.0,210,true,29000,3,5,18,600

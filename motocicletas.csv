@@ -1,0 +1,21 @@
+Placa,Marca,Modelo,Año,Color,Capacidad del motor (cc),Capacidad del tanque (L),Velocidad máxima (km/h),Transmisión,Precio (USD),Estado,Tipo de moto,Tamaño de ruedas (pulgadas)
+MOTO-4832,Yamaha,MT-07,2019,Negro,689,14.0,210,true,7500,1,Deportiva,17
+MOTO-8392,Honda,CBR500R,2021,Rojo,471,17.0,185,false,6800,1,Deportiva,17
+MOTO-3920,Suzuki,Gixxer 250,2020,Azul,249,12.0,150,true,4200,3,Deportiva,16
+MOTO-5231,BMW,R1250GS,2022,Gris,1254,20.0,220,false,18000,1,Crucero,19
+MOTO-1920,Ducati,Monster 821,2018,Rojo,821,16.5,220,true,12000,3,Deportiva,17
+MOTO-7584,Kawasaki,Z650,2020,Verde,649,15.0,200,true,7500,1,Deportiva,17
+MOTO-8475,Yamaha,MT-03,2019,Azul,321,14.0,180,true,4500,2,Deportiva,17
+MOTO-6352,Honda,Rebel 500,2021,Negro,471,12.8,170,false,6000,1,Crucero,16
+MOTO-4839,Suzuki,SV650,2017,Blanco,645,14.5,200,true,7000,3,Deportiva,17
+MOTO-1024,Ducati,Panigale V4,2022,Rojo,1103,17.0,300,false,25000,2,Deportiva,17
+MOTO-2784,Kawasaki,Ninja 400,2019,Verde,399,14.0,190,true,6000,1,Deportiva,17
+MOTO-3948,BMW,G310R,2020,Azul,313,11.0,160,false,5000,1,Crucero,17
+MOTO-8245,Yamaha,R1,2021,Negro,998,17.0,299,false,18000,2,Deportiva,17
+MOTO-6358,Honda,CB300R,2020,Gris,286,10.0,145,true,4700,1,Deportiva,16
+MOTO-7364,Suzuki,HayaBusa,2018,Blanco,1340,21.0,312,false,15000,3,Deportiva,18
+MOTO-9382,Ducati,Multistrada 950,2021,Rojo,937,20.0,240,false,17000,1,Crucero,19
+MOTO-2953,Kawasaki,Z900,2022,Verde,948,19.0,250,false,9000,1,Deportiva,18
+MOTO-5938,Yamaha,XSR900,2019,Azul,847,15.0,220,true,11000,2,Deportiva,17
+MOTO-2048,Honda,Africa Twin,2020,Negro,998,18.0,210,false,16000,1,Crucero,19
+MOTO-3947,BMW,S1000RR,2022,Blanco,999,16.0,310,false,22000,1,Deportiva,17
