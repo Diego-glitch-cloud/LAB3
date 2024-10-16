@@ -33,7 +33,7 @@ public class Main {
                 2 = Motocicletas
                 3 = Camiones 
 
-                Seleccione el número del tipo de vehículo que quiere listar: """;
+                Seleccione el número del tipo de vehículo que desea listar/buscar: """;
 
         String autoscsv = "autos.csv";
         String motoscsv = "motocicletas.csv";
@@ -90,13 +90,61 @@ public class Main {
                             }
                             break;
                         case 2:
+                            
+                            System.out.print(menu2);
+                            opcion2 = scanner.nextInt();
+                            System.out.print("Ingrese la matrícula que desea buscar: ");
+                            String matricula = scanner.next();
+
+                            if (opcion2 == 1) {
+                                for (int i = 0; i < autos.size(); i++) {
+                                    String[] fila = autos.get(i);
+                                    if (fila[0].equals(matricula)){
+                                        System.out.println("Vehículo encontrado, imprimiendo información...");
+                                        for (int j = 0; j < fila.length; j++) {
+                                            System.out.print(fila[j] + "| ");
+                                        }
+                                    }
+                                }
+                                System.out.println("Vehículo no encontrado.");
+                            } else if (opcion2 == 2) {
+                                for (int i = 0; i < motos.size(); i++) {
+                                    String[] fila = motos.get(i);
+                                    if (fila[0].equals(matricula)){
+                                        System.out.println("Vehículo encontrado, imprimiendo información...");
+                                        for (int j = 0; j < fila.length; j++) {
+                                            System.out.print(fila[j] + "| ");
+                                        }
+                                    }
+                                }
+                                System.out.println("Vehículo no encontrado.");
+                            } else if (opcion2 ==3) {
+                                for (int i = 0; i < camiones.size(); i++) {
+                                    String[] fila = camiones.get(i);
+                                    if (fila[0].equals(matricula)){
+                                        System.out.println("Vehículo encontrado, imprimiendo información...");
+                                        for (int j = 0; j < fila.length; j++) {
+                                            System.out.print(fila[j] + "| ");
+                                        }
+                                    }
+                                }
+                                System.out.println("Vehículo no encontrado.");
+                            } else {
+                                System.out.println("Opción Inválida.");
+                            }
+                            break; 
                         case 3:
+                        break;
                         case 4:
+                        break;
                         case 5:
+                        break;
                         case 6:
+                        break;
                         case 7:
                             continuar = false;
                             System.out.println("Saliendo...");
+                            break;
                     }
                     
                 } else {
