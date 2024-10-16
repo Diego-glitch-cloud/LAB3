@@ -58,81 +58,80 @@ public class Main {
                 if (opcion >= 1 && opcion <= 7) {
                     switch (opcion) {
                         case 1: 
+                            ArrayList<String[]> lista = new ArrayList<>();
+
+                            // Pide opción al usuario
                             System.out.print(menu2);
                             opcion2 = scanner.nextInt();
                             
-                            if (opcion2 == 1) {
-                                for (int i = 0; i < autos.size(); i++) {
-                                    String[] fila = autos.get(i);
-                                    for (int j = 0; j < fila.length; j++) {
-                                        System.out.print(fila[j] + "| ");
-                                    }
-                                    System.out.println();
+                            switch (opcion2) {
+                                case 1:
+                                    lista = autos;
+                                    break;
+                                case 2:
+                                    lista = motos;
+                                    break;
+                                case 3:
+                                    lista = camiones;
+                                    break;
+                                default:
+                                    System.out.println("Opción Inválida.");
+                            }
+
+                            if (lista.isEmpty()) {
+                                break;  // sale del Switch si la lista está vacía
+                            }
+
+                            // Si no está vacía, imprime la lista
+                            for (int i = 0; i < lista.size(); i++) {
+                                String[] fila = lista.get(i);
+                                for (int j = 0; j < fila.length; j++) {
+                                    System.out.print(fila[j] + "| ");
                                 }
-                            } else if (opcion2 == 2) {
-                                for (int i = 0; i < motos.size(); i++) {
-                                    String[] fila = motos.get(i);
-                                    for (int j = 0; j < fila.length; j++) {
-                                        System.out.print(fila[j] + "| ");
-                                    }
-                                    System.out.println();
-                                }
-                            } else if (opcion2 ==3) {
-                                for (int i = 0; i < camiones.size(); i++) {
-                                    String[] fila = camiones.get(i);
-                                    for (int j = 0; j < fila.length; j++) {
-                                        System.out.print(fila[j] + "| ");
-                                    }
-                                    System.out.println();
-                                }
-                            } else {
-                                System.out.println("Opción Inválida.");
+                                System.out.println();
                             }
                             break;
                         case 2:
-                            
+                            boolean encontrado = false;
+                            ArrayList<String[]> base = new ArrayList<>();
+
+                            // Pide opción al usuario y también la matrícula que busca
                             System.out.print(menu2);
                             opcion2 = scanner.nextInt();
                             System.out.print("Ingrese la matrícula que desea buscar: ");
                             String matricula = scanner.next();
 
-                            if (opcion2 == 1) {
-                                for (int i = 0; i < autos.size(); i++) {
-                                    String[] fila = autos.get(i);
-                                    if (fila[0].equals(matricula)){
-                                        System.out.println("Vehículo encontrado, imprimiendo información...");
-                                        for (int j = 0; j < fila.length; j++) {
-                                            System.out.print(fila[j] + "| ");
-                                        }
-                                    }
-                                }
-                                System.out.println("Vehículo no encontrado.");
-                            } else if (opcion2 == 2) {
-                                for (int i = 0; i < motos.size(); i++) {
-                                    String[] fila = motos.get(i);
-                                    if (fila[0].equals(matricula)){
-                                        System.out.println("Vehículo encontrado, imprimiendo información...");
-                                        for (int j = 0; j < fila.length; j++) {
-                                            System.out.print(fila[j] + "| ");
-                                        }
-                                    }
-                                }
-                                System.out.println("Vehículo no encontrado.");
-                            } else if (opcion2 ==3) {
-                                for (int i = 0; i < camiones.size(); i++) {
-                                    String[] fila = camiones.get(i);
-                                    if (fila[0].equals(matricula)){
-                                        System.out.println("Vehículo encontrado, imprimiendo información...");
-                                        for (int j = 0; j < fila.length; j++) {
-                                            System.out.print(fila[j] + "| ");
-                                        }
-                                    }
-                                }
-                                System.out.println("Vehículo no encontrado.");
-                            } else {
-                                System.out.println("Opción Inválida.");
+                            switch (opcion2) {
+                                case 1:
+                                    base = autos;
+                                    break;
+                                case 2:
+                                    base = motos;
+                                    break;
+                                case 3:
+                                    base = camiones;
+                                    break;
+                                default:
+                                    System.out.println("Opción Inválida.");
                             }
-                            break; 
+                            
+                            // Busca si la matrícula coincide con la base de datos del tipo de vehículo
+                            for (int i = 0; i < base.size(); i++) {
+                                String[] fila = base.get(i);
+                                if (fila[0].equals(matricula)){
+                                    System.out.println("Vehículo encontrado, imprimiendo información...");
+                                    encontrado = true; 
+                                    for (int j = 0; j < fila.length; j++) {
+                                        System.out.print(fila[j] + "| ");
+                                    }
+                                }
+                            }
+                            System.out.println();
+
+                            if (!encontrado) {
+                                System.out.println("Vehículo no encontrado.");
+                            }
+                        break; 
                         case 3:
                         break;
                         case 4:
