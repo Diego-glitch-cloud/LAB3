@@ -11,11 +11,11 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int opcion; // opción elegida en el menú
+        int opcion2; // opción para el menú 2
         boolean continuar = true; 
 
 
         String menu = """
-                Seleccione el número correspondiente a la opción que desea realizar: 
 
                 1 = Listar vehículos por categoría
                 2 = Buscar vehículo por ID 
@@ -24,7 +24,16 @@ public class Main {
                 5 = Mostrar estado de los vehículos
                 6 = Calcular Monto total en Quetzales por vehículos según su estado
                 7 = Salir
-                """;
+
+                Seleccione el número correspondiente a la opción que desea realizar: """;
+
+        String menu2 = """
+
+                1 = Autos
+                2 = Motocicletas
+                3 = Camiones 
+
+                Seleccione el número del tipo de vehículo que quiere listar: """;
 
         String autoscsv = "autos.csv";
         String motoscsv = "motocicletas.csv";
@@ -40,18 +49,46 @@ public class Main {
         camiones = leerCsv(camionescsv);
 
         while (continuar) {
-            System.out.println(menu);
-            System.out.print("Ingrese la opción que desea ejecutar: ");
+            System.out.print(menu);
             
             // Comprobar si la entrada es un número
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 // Verificar si el número está dentro del rango permitido por el menú
                 if (opcion >= 1 && opcion <= 7) {
-
-                    // switch switch switch 
                     switch (opcion) {
                         case 1: 
+                            System.out.print(menu2);
+                            opcion2 = scanner.nextInt();
+                            
+                            if (opcion2 == 1) {
+                                for (int i = 0; i < autos.size(); i++) {
+                                    String[] fila = autos.get(i);
+                                    for (int j = 0; j < fila.length; j++) {
+                                        System.out.print(fila[j] + "| ");
+                                    }
+                                    System.out.println();
+                                }
+                            } else if (opcion2 == 2) {
+                                for (int i = 0; i < motos.size(); i++) {
+                                    String[] fila = motos.get(i);
+                                    for (int j = 0; j < fila.length; j++) {
+                                        System.out.print(fila[j] + "| ");
+                                    }
+                                    System.out.println();
+                                }
+                            } else if (opcion2 ==3) {
+                                for (int i = 0; i < camiones.size(); i++) {
+                                    String[] fila = camiones.get(i);
+                                    for (int j = 0; j < fila.length; j++) {
+                                        System.out.print(fila[j] + "| ");
+                                    }
+                                    System.out.println();
+                                }
+                            } else {
+                                System.out.println("Opción Inválida.");
+                            }
+                            break;
                         case 2:
                         case 3:
                         case 4:
