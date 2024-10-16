@@ -13,6 +13,24 @@ public class Vehiculo {
     float tamanioRuedas;
     int estado;
 
+    // Constructor
+    public Vehiculo(String placa, String marca, String modelo, int año, String color,
+                    float capacidadMotor, float capacidadTanque, float velocidadMax,
+                    Boolean transmision, double precio, float tamanioRuedas, int estado) {
+        this.placa = placa;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.año = año;
+        this.color = color;
+        this.capacidadMotor = capacidadMotor;
+        this.capacidadTanque = capacidadTanque;
+        this.velocidadMax = velocidadMax;
+        this.transmision = transmision;
+        this.precio = precio;
+        this.tamanioRuedas = tamanioRuedas;
+        this.estado = estado;
+    }
+
     // Setters & Getters
     public String getPlaca() {
         return placa;
