@@ -133,12 +133,267 @@ public class Main {
                             }
                         break; 
                         case 3:
-                        break;
+                            System.out.print(menu2);
+                            opcion2 = scanner.nextInt();
+
+                            if (opcion2 >= 1 && opcion2 <= 3) {
+                                // Solicitar datos comunes
+                                System.out.print("Ingrese la placa del vehículo: ");
+                                String placa = scanner.next();
+                                System.out.print("Ingrese la marca del vehículo: ");
+                                String marca = scanner.next();
+                                System.out.print("Ingrese el modelo del vehículo: ");
+                                String modelo = scanner.next();
+                                System.out.print("Ingrese el año de fabricación: ");
+                                int año = scanner.nextInt();
+                                System.out.print("Ingrese el color del vehículo: ");
+                                String color = scanner.next();
+                                System.out.print("Ingrese la capacidad del motor (en L o cc para motos): ");
+                                float capacidadMotor = scanner.nextFloat();
+                                System.out.print("Ingrese la capacidad del tanque (en L): ");
+                                float capacidadTanque = scanner.nextFloat();
+                                System.out.print("Ingrese la velocidad máxima (en km/h): ");
+                                float velocidadMax = scanner.nextFloat();
+                                System.out.print("Ingrese el tipo de transmisión (true para manual, false para automática): ");
+                                boolean transmision = scanner.nextBoolean();
+                                System.out.print("Ingrese el precio del vehículo: ");
+                                double precio = scanner.nextDouble();
+                                System.out.print("Ingrese el estado del vehículo (1 = disponible, 2 = reservado, 3 = vendido): ");
+                                int estado = scanner.nextInt();
+
+                                // Crear fila para agregar al CSV y a la lista correspondiente
+                                String[] fila = null;
+
+                                if (opcion2 == 1) { // Autos
+                                    System.out.print("Ingrese el número de puertas: ");
+                                    int numeroPuertas = scanner.nextInt();
+                                    System.out.print("Ingrese la capacidad del maletero (en litros): ");
+                                    float capacidadMaletero = scanner.nextFloat();
+
+                                    // Crear array de String para representar el auto
+                                    fila = new String[] { placa, marca, modelo, String.valueOf(año), color, String.valueOf(capacidadMotor),
+                                                        String.valueOf(capacidadTanque), String.valueOf(velocidadMax),
+                                                        String.valueOf(transmision), String.valueOf(precio), String.valueOf(estado),
+                                                        String.valueOf(numeroPuertas), String.valueOf(capacidadMaletero) };
+
+                                    // Añadir a la lista de autos
+                                    autos.add(fila);
+                                    escribirCsv(autoscsv, fila);
+
+                                } else if (opcion2 == 2) { // Motocicletas
+                                    System.out.print("Ingrese el tipo de motocicleta (deportiva, crucero, etc.): ");
+                                    String tipo = scanner.next();
+
+                                    // Crear array de String para representar la motocicleta
+                                    fila = new String[] { placa, marca, modelo, String.valueOf(año), color, String.valueOf(capacidadMotor),
+                                                        String.valueOf(capacidadTanque), String.valueOf(velocidadMax),
+                                                        String.valueOf(transmision), String.valueOf(precio), String.valueOf(estado),
+                                                        tipo };
+
+                                    // Añadir a la lista de motos
+                                    motos.add(fila);
+                                    escribirCsv(motoscsv, fila);
+
+                                } else if (opcion2 == 3) { // Camiones
+                                    System.out.print("Ingrese la capacidad de carga (en toneladas): ");
+                                    float capacidadCarga = scanner.nextFloat();
+                                    System.out.print("Ingrese el número de ejes: ");
+                                    int ejes = scanner.nextInt();
+
+                                    // Crear array de String para representar el camión
+                                    fila = new String[] { placa, marca, modelo, String.valueOf(año), color, String.valueOf(capacidadMotor),
+                                                        String.valueOf(capacidadTanque), String.valueOf(velocidadMax),
+                                                        String.valueOf(transmision), String.valueOf(precio), String.valueOf(estado),
+                                                        String.valueOf(capacidadCarga), String.valueOf(ejes) };
+
+                                    // Añadir a la lista de camiones
+                                    camiones.add(fila);
+                                    escribirCsv(camionescsv, fila);
+                                }
+
+                                System.out.println("Vehículo agregado exitosamente.");
+                            } else {
+                                System.out.println("Opción inválida.");
+                            }
+                        break;                        
                         case 4:
+                            System.out.print(menu2);
+                            opcion2 = scanner.nextInt();
+
+                            ArrayList<String[]> baseParaEliminar = null; // esta es una copia de la base de datos que luego se va a sobreescribir en el csv
+                            String archivo = ""; // Archivo csv según el tipo de vehículo que desea eliminar, es donde se sobreescribirá la base de datos al final 
+
+                            switch (opcion2) {
+                                case 1:
+                                    baseParaEliminar = autos;
+                                    archivo = autoscsv;
+                                    break;
+                                case 2:
+                                    baseParaEliminar = motos;
+                                    archivo = motoscsv;
+                                    break;
+                                case 3:
+                                    baseParaEliminar = camiones;
+                                    archivo = camionescsv;
+                                    break;
+                                default:
+                                    System.out.println("Opción inválida.");
+                                    break;
+                            }
+
+                                System.out.print("Ingrese la placa del vehículo que desea eliminar: ");
+                                String placaAEliminar = scanner.next();
+                                boolean eliminado = false;
+
+                                // Buscar el vehículo en la copia
+                                for (int i = 0; i < baseParaEliminar.size(); i++) {
+                                    String[] fila = baseParaEliminar.get(i);
+
+                                    if (fila[0].equals(placaAEliminar)) { // La placa está en la primera columna index 0
+                                        baseParaEliminar.remove(i); // Eliminar el vehículo de la copia
+                                        eliminado = true;
+                                        break; // Salir del bucle después de eliminar para que no siga corriendo
+                                    }
+                                }
+
+                                // en caso de que se haya eliminado el vehículo
+                                if (eliminado) {
+                                    // Sobrescribir el archivo CSV con la copia actualizada
+                                    // es una función similar que la utilizada para leer los csv
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
+                                        for (String[] fila : baseParaEliminar) {
+                                            writer.write(String.join(",", fila));
+                                            writer.newLine();
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    System.out.println("Vehículo eliminado exitosamente.");
+                                } else {
+                                    System.out.println("No se encontró un vehículo con esa placa.");
+                                }
                         break;
                         case 5:
-                        break;
+                            int totalDisponiblesAutos = 0;
+                            int totalReservadosAutos = 0;
+                            int totalVendidosAutos = 0;
+
+                            int totalDisponiblesMotos = 0;
+                            int totalReservadosMotos = 0;
+                            int totalVendidosMotos = 0;
+
+                            int totalDisponiblesCamiones = 0;
+                            int totalReservadosCamiones = 0;
+                            int totalVendidosCamiones = 0;
+
+                            // itero en la lista de autos y cuento sus estados
+                            for (String[] auto : autos) {
+                                switch (auto[10]) { 
+                                    case "1":
+                                        totalDisponiblesAutos++;
+                                        break;
+                                    case "2":
+                                        totalReservadosAutos++;
+                                        break;
+                                    case "3":
+                                        totalVendidosAutos++;
+                                        break;
+                                }
+                            }
+
+                            // Cuento los estados de las motos
+                            for (String[] moto : motos) {
+                                switch (moto[10]) { 
+                                    case "1":
+                                        totalDisponiblesMotos++;
+                                        break;
+                                    case "2":
+                                        totalReservadosMotos++;
+                                        break;
+                                    case "3":
+                                        totalVendidosMotos++;
+                                        break;
+                                }
+                            }
+
+                            // Contar estados de los camiones
+                            for (String[] camion : camiones) {
+                                switch (camion[10]) { 
+                                    case "1":
+                                        totalDisponiblesCamiones++;
+                                        break;
+                                    case "2":
+                                        totalReservadosCamiones++;
+                                        break;
+                                    case "3":
+                                        totalVendidosCamiones++;
+                                        break;
+                                }
+                            }
+
+                            // Ahora imprimo los resultados obtenidos
+                            System.out.println("Total de vehículos por categoría:");
+                            System.out.println("Autos: Disponibles: " + totalDisponiblesAutos + ", Reservados: " + totalReservadosAutos + ", Vendidos: " + totalVendidosAutos);
+                            System.out.println("Motocicletas: Disponibles: " + totalDisponiblesMotos + ", Reservados: " + totalReservadosMotos + ", Vendidos: " + totalVendidosMotos);
+                            System.out.println("Camiones: Disponibles: " + totalDisponiblesCamiones + ", Reservados: " + totalReservadosCamiones + ", Vendidos: " + totalVendidosCamiones);
+                            break;
+
                         case 6:
+                            double totalDisponibles = 0;
+                            double totalReservados = 0;
+                            double totalVendidos = 0;
+
+                            // Calcular total para los autos
+                            for (String[] auto : autos) {
+                                switch (auto[10]) {
+                                    case "1":
+                                        totalDisponibles += Double.parseDouble(auto[9]);
+                                        break;
+                                    case "2":
+                                        totalReservados += Double.parseDouble(auto[9]);
+                                        break;
+                                    case "3":
+                                        totalVendidos += Double.parseDouble(auto[9]);
+                                        break;
+                                }
+                            }
+
+                            // Calcular total para las motocicletas
+                            for (String[] moto : motos) {
+                                switch (moto[10]) { 
+                                    case "1":
+                                        totalDisponibles += Double.parseDouble(moto[9]); 
+                                        break;
+                                    case "2":
+                                        totalReservados += Double.parseDouble(moto[9]);
+                                        break;
+                                    case "3":
+                                        totalVendidos += Double.parseDouble(moto[9]);
+                                        break;
+                                }
+                            }
+
+                            // Calcular total para los camiones
+                            for (String[] camion : camiones) {
+                                switch (camion[10]) { 
+                                    case "1":
+                                        totalDisponibles += Double.parseDouble(camion[9]); 
+                                        break;
+                                    case "2":
+                                        totalReservados += Double.parseDouble(camion[9]);
+                                        break;
+                                    case "3":
+                                        totalVendidos += Double.parseDouble(camion[9]);
+                                        break;
+                                }
+                            }
+
+                            // Mostrar resultados
+                            System.out.println("Monto total en Quetzales:");
+                            System.out.printf("Disponibles: Q%.2f%n", totalDisponibles * 7.8);
+                            System.out.printf("Reservados: Q%.2f%n", totalReservados * 7.8);
+                            System.out.printf("Vendidos: Q%.2f%n", totalVendidos * 7.8);
                         break;
                         case 7:
                             continuar = false;
@@ -156,10 +411,7 @@ public class Main {
             }
         }
 
-        
         scanner.close(); // Cerrar el escáner
-
-        
     }
 
 
@@ -195,4 +447,19 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    // Función para traducir el estado de un número a letras con la intención de imprimirlo
+    private static String obtenerEstado(String estado) {
+        switch (estado) {
+            case "1":
+                return "Disponible";
+            case "2":
+                return "Reservado";
+            case "3":
+                return "Vendido";
+            default:
+                return "Desconocido";
+        }
+    }
+    
 }
